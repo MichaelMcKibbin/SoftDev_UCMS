@@ -163,4 +163,17 @@ public class Utility {
      System.out.println("Password cannot be empty.");
      }
      }
+
+    public static int readIntInRange(String s, int i, int size) {
+         Scanner sc = new Scanner(System.in);
+         while (true) {
+             System.out.print(s);
+             int choice = sc.nextInt();
+             if (choice >= i && choice < i + size) {
+                 return choice;
+             } else {
+                 System.out.println("Please enter a number between " + i + " and " + (i + size - 1));
+             }
+         }
+    }
 }

@@ -178,9 +178,12 @@ public class CourseManagementModule {
             switch (choice) {
                 case 1:
                     // TODO: Implement course name update
+                    // update course name
+                    updateCourseName();
                     break;
                 case 2:
                     // TODO: Implement course code update
+                    System.out.println("This feature is not implemented for Exercise 2.\n");
                     break;
                 case 3:
                     ModuleManagement.manageModules(admin, searchedCourse);
@@ -221,11 +224,37 @@ public class CourseManagementModule {
         return courseFound;
     }
 
+    private static void updateCourseName() {
+        var courses = CourseManagement.CourseManagementModule.courseList;
+        if (courses.isEmpty()) {
+            System.out.println("No courses available to update.\n");
+            return;
+        }
+
+        // List courses with indices
+        System.out.println("Available courses:");
+        for (int i = 0; i < courses.size(); i++) {
+            var c = courses.get(i);
+            System.out.printf("  %d) %s - %s%n", i + 1, c.getCourseCode(), c.getCourseName());
+        }
+
+        // Get a valid index
+        int idx = Utilities.Utility.readIntInRange("Select a course by number: ", 1, courses.size()) - 1;
+
+        // Get non-empty new name
+        String newName = Utilities.Utility.readNonEmptyLine("Enter new course name: ");
+
+        // Update
+        courses.get(idx).setCourseName(newName);
+        System.out.println("Course name updated successfully.\n");
+    }
+
     /**
      * Archives a course in the system.
      * Placeholder for future implementation.
      */
     public static void archiveCourse() {
         // TODO: Implement archive functionality
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 }

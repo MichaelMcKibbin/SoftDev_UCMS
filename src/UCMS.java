@@ -152,6 +152,7 @@ public class UCMS {
         String[] menuOptions = {"View Modules", "Manage Assessments", "Exit"};
         int choice = Utility.printMenu("UCMS Student Main Menu", menuOptions);
         // TODO: Implement actual student menu logic
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 
     /**
@@ -160,7 +161,20 @@ public class UCMS {
      */
     public static void showLecturerOptions() {
         Lecturer lecturer = new Lecturer();
-        // TODO: Implement lecturer-specific menu logic
+        // Implement lecturer-specific menu logic
+        String[] options = {
+                "View My Modules (stub)",
+                "Update Profile (stub)",
+                "Back"
+        };
+        while (true) {
+            int choice = Utilities.Utility.printMenu("LECTURER MENU", options);
+            switch (choice) {
+                case 1 -> System.out.println("Feature not implemented for Exercise 2.\n");
+                case 2 -> System.out.println("Feature not implemented for Exercise 2.\n");
+                case 3 -> { return; } // Back to main role selection
+            }
+        }
     }
 
     /**

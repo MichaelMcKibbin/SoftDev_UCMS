@@ -89,6 +89,7 @@ public class Student extends User implements Assignable<Course> {
      */
     public void updateStudent(User user) {
         // TODO: Implement logic to update student attributes
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 
     /**

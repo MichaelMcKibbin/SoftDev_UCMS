@@ -49,9 +49,13 @@ public class ModuleManagement {
                 break;
             case 4:
                 // TODO: Implement archive module functionality
+                System.out.println("This feature is not implemented for Exercise 2.\n");
                 break;
             case 5:
                 // TODO: Navigate back to course management menu
+                // Navigate back to course management menu
+                System.out.println("Returning to Course Management Menu...");
+                CourseManagementModule.courseManagement(admin);
                 break;
             default:
                 System.out.println("Invalid selection. Try again.");
@@ -162,5 +166,6 @@ public class ModuleManagement {
      */
     public static void updateModule(User admin, Course course) {
         // TODO: Implement update functionality for modules
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 }

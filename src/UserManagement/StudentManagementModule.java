@@ -138,6 +138,7 @@ public class StudentManagementModule {
     public static void removeStudents() {
         System.out.print("Enter Student ID: ");
         // TODO: Implement actual removal logic
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 
     /**
@@ -148,5 +149,6 @@ public class StudentManagementModule {
     public static void updateStudent() {
         System.out.print("How many students would you like to remove?: ");
         // TODO: Implement update logic
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 }

@@ -32,5 +32,6 @@ public class LecturerManagementModule {
         // 1. Display a formatted menu for lecturer management
         // 2. Implement methods to add, update, remove, and view lecturers
         // 3. Integrate lecturer assignments to courses/modules
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 }

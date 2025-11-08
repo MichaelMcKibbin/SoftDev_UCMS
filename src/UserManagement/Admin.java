@@ -68,6 +68,7 @@ public class Admin extends User {
      */
     public void archiveUser(User user) {
         // TODO: implement user archiving logic
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 
     /**
@@ -78,6 +79,7 @@ public class Admin extends User {
      */
     public void updateUser(User user) {
         // TODO: implement user update logic
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 
     // ---------------------- COURSE MANAGEMENT ----------------------
@@ -100,6 +102,7 @@ public class Admin extends User {
      */
     public void updateCourse(Course course, ArrayList<Course> courseList) {
         // TODO: implement course update logic
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 
     /**
@@ -108,6 +111,7 @@ public class Admin extends User {
      */
     public void getCourses() {
         // TODO: implement retrieval of courses
+        System.out.println("This feature is not implemented for Exercise 2.\n");
     }
 
     // ---------------------- MODULE MANAGEMENT ----------------------
