@@ -23,7 +23,7 @@ import java.util.Scanner;
 public class UCMS {
 
     /** Reference to the currently logged-in Admin object. */
-    private static Admin admin;
+    static Admin admin; // package private to allow creation of sample data in Main.
 
     /**
      * Determines the user role (Admin, Lecturer, or Student)
@@ -62,30 +62,53 @@ public class UCMS {
      *
      * @return true if login succeeds (always true in this demo)
      */
+//    public static boolean login() {
+//        Utility.printInputPromptMenu("Admin Login", 60);
+//        Scanner sc = new Scanner(System.in);
+//
+//        System.out.print("Enter First Name: ");
+//        String adminFirstname = sc.nextLine();
+//        //
+//        System.out.print("Enter Last Name: ");
+//        String adminLastname = sc.nextLine();
+//
+//        System.out.print("Enter Email Address: ");
+//        String adminEmail = sc.nextLine();
+//
+//        System.out.print("Enter Phone Number: ");
+//        String adminPhoneNumber = sc.nextLine();
+//
+//        System.out.print("Enter Password: ");
+//        String adminPassword = sc.nextLine();
+//
+//        // Create a new Admin object for the current session
+//        admin = new Admin(adminFirstname, adminLastname, adminEmail, adminPassword, "", adminPhoneNumber);
+//
+//        return true;
+//    }
     public static boolean login() {
-        Utility.printInputPromptMenu("Admin Login", 60);
-        Scanner sc = new Scanner(System.in);
+        Utility.printInputPromptMenu("ADMIN LOGIN", 60);
 
-        System.out.print("Enter First Name: ");
-        String adminFirstname = sc.nextLine();
-        //
-        System.out.print("Enter Last Name: ");
-        String adminLastname = sc.nextLine();
+        while (true) {
+            // Gather validated fields using Utility helpers - no blanks, simple format checking.
+            String firstName = Utility.readAlpha("Enter First Name: ");
+            String lastName  = Utility.readAlpha("Enter Last Name: ");
+            String email     = Utility.readEmail("Enter Email Address: ");
+            String phone     = Utility.readPhone("Enter Phone Number: ");
+            String password  = Utility.readPassword("Enter Password: ");
 
-        System.out.print("Enter Email Address: ");
-        String adminEmail = sc.nextLine();
-
-        System.out.print("Enter Phone Number: ");
-        String adminPhoneNumber = sc.nextLine();
-
-        System.out.print("Enter Password: ");
-        String adminPassword = sc.nextLine();
-
-        // Create a new Admin object for the current session
-        admin = new Admin(adminFirstname, adminLastname, adminEmail, adminPassword, "", adminPhoneNumber);
-
-        return true;
+            try {
+                // Construct Admin - User-level validation runs here
+                admin = new Admin(firstName, lastName, email, password, "", phone);
+                return true; // success
+            } catch (IllegalArgumentException ex) {
+                // Graceful handling - explain error and retry
+                System.out.println("Invalid input format: " + ex.getMessage());
+                System.out.println("Please re-enter your details.\n");
+            }
+        }
     }
+
 
     /**
      * Displays the Admin main menu and allows the user to perform

@@ -1,6 +1,7 @@
 package UserManagement;
 
 import CourseManagement.Course;
+import Interfaces.Assignable;
 import Interfaces.Authenticatable;
 
 import java.io.File;
@@ -23,7 +24,7 @@ import java.util.Scanner;
  *
  * Each Student object is assigned a unique student ID and optionally linked to a Course.
  */
-public class Student extends User {
+public class Student extends User implements Assignable<Course> {
 
     /** Unique ID assigned to the student */
     private String studentId;
@@ -161,6 +162,32 @@ public class Student extends User {
 //        System.out.println(getFirstname() + " has logged out successfully.");
 //        return true;
 //    }
+
+    // ---------------------- ASSIGNABLE IMPLEMENTATION ----------------------
+
+    @Override
+    public void assignTo(Course course) {
+        this.course = course;
+        System.out.println(getFirstname() + " has been assigned to course " + course.getCourseName());
+    }
+
+    @Override
+    public Course getAssignee() {
+        return course;
+    }
+
+    @Override
+    public boolean isAssigned() {
+        return course != null;
+    }
+
+    @Override
+    public void unassign() {
+        System.out.println(getFirstname() + " has been unassigned from " +
+                (course != null ? course.getCourseName() : "No course"));
+        this.course = null;
+    }
+
 
     // ---------------------- OVERRIDE ABSTRACT METHOD ----------------------
 

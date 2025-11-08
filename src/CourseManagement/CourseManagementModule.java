@@ -3,7 +3,10 @@ package CourseManagement;
 import java.util.ArrayList;
 import java.util.Scanner;
 import UserManagement.Admin;
+import UserManagement.Lecturer;
+import UserManagement.Student;
 import Utilities.Utility;
+import CourseManagement.Module;
 
 /**
  * CourseManagementModule
@@ -23,6 +26,17 @@ public class CourseManagementModule {
 
     /** Container to hold all courses in the system. */
     public static ArrayList<Course> courseList = new ArrayList<>();
+
+    /** Container to hold all modules in the system. */
+    public static ArrayList<Module> moduleList = new ArrayList<>();
+
+    // future use...
+//    /** Container to hold all students in the system. */
+//    public static ArrayList<Student> studentList = new ArrayList<>();
+//
+//    /** Container to hold all lecturers in the system. */
+//    public static ArrayList<Lecturer> lecturerList = new ArrayList<>();
+//
 
     /**
      * Displays the course management menu and routes the admin
