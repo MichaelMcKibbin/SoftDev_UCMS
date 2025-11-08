@@ -72,8 +72,8 @@ public abstract class User {
      *
      * @param reportParameters an array of strings containing data for the report
      */
-    //TODO: declare abstract method here.
-    abstract void generateReport(String[] reportParameters);
+    //declare abstract method here.
+    public abstract void generateReport(String[] reportParameters);
 
 
     // --------------------- GETTERS & SETTERS ---------------------
@@ -198,10 +198,13 @@ public abstract class User {
         LocalDate parsedDate = null;
         for (String format : formats) {
             try {
+                // attempt parse with this formatter
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
                 parsedDate = LocalDate.parse(dateInput, formatter);
                 break; // Stop at the first successful parse
             } catch (DateTimeParseException ignored) {
+                // Intentionally ignore here; we try the next format and throw once if all fail.
+
             }
         }
 

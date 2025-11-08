@@ -155,8 +155,8 @@ public class UCMS {
                 /* === Invoke Admin's report generation method ===
                  * getReportParameters() returns report data.
                  * */
-                // TODO: Add logic for generating report. Admin object calls the generateReport() with data as argument
-
+                // Add logic for generating report. Admin object calls the generateReport() with data as argument
+                admin.generateReport(getReportParameters());
 
                 System.out.println("Press Enter to continue...");
                 new Scanner(System.in).nextLine();
@@ -191,9 +191,9 @@ public class UCMS {
 
         // Static sample data for demonstration purposes
         int numStudents = StudentManagementModule.studentsContainer.size();
-        // TODO: Replace with actual dynamic data from the respective modules
-        int numCourses = 10;
-        int numLecturers = 50;
+        // actual dynamic data from the respective modules
+        int numCourses   = CourseManagement.CourseManagementModule.courseList.size();
+        int numLecturers = UserManagement.LecturerManagementModule.lecturersList.size();
 
         // Construct and return a string array containing report parameters
         // This array matches the expected input for Admin's generateReport method inherited from the user class

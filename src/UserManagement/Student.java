@@ -42,6 +42,11 @@ public class Student extends User {
     /** Default constructor */
     public Student() {}
 
+    @Override
+    public void generateReport(String[] reportParameters) {
+        // Stub method
+    }
+
     /**
      * Creates a new Student object with personal and system attributes.
      *

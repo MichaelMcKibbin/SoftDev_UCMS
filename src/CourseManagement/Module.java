@@ -2,7 +2,7 @@ package CourseManagement;
 
 import UserManagement.Lecturer;
 import Interfaces.Assignable;
-import UserManagement.User;
+
 
 import java.io.File;
 
@@ -18,7 +18,7 @@ import java.io.File;
  *
  * Implements the Assignable interface to allow flexible assignment to a User.
  */
-public class Module {
+public class Module implements Interfaces.Assignable<Lecturer> {
 
     // ---------------------- FIELDS ----------------------
 
@@ -133,12 +133,31 @@ public class Module {
      *
      * @param user the user to assign this module to
      */
+//    @Override
+//    public void assignTo(User user) {
+//        if (user instanceof Lecturer) {
+//            this.lecturer = (Lecturer) user;
+//        } else {
+//            System.out.println("Only a Lecturer can be assigned to a module.");
+//        }
+//    }
+
     @Override
-    public void assignTo(User user) {
-        if (user instanceof Lecturer) {
-            this.lecturer = (Lecturer) user;
-        } else {
-            System.out.println("Only a Lecturer can be assigned to a module.");
+    public void assignTo(Lecturer l) {
+        if (l == null) return;
+
+        // If already assigned to someone else, clean up that relationship first.
+        if (this.lecturer != null) {
+            this.lecturer.getModulesTaught().remove(moduleCode + " - " + moduleName);
+        }
+
+        this.lecturer = l;
+
+        // Reflect on the lecturer side (store "CODE - NAME" as per your Lecturer design)
+        // Make sure Lecturer.getModulesTaught() is initialized (e.g., new ArrayList<>()).
+        String friendlyName = moduleCode + " - " + moduleName;
+        if (!l.getModulesTaught().contains(friendlyName)) {
+            l.getModulesTaught().add(friendlyName);
         }
     }
 
@@ -148,9 +167,11 @@ public class Module {
      * @return assigned user (Lecturer) or null if unassigned
      */
     @Override
-    public User getAssignee() {
+    public Lecturer getAssignee() {
         return lecturer;
     }
+
+
 
     /**
      * Checks if this module is currently assigned to a Lecturer.
@@ -167,6 +188,9 @@ public class Module {
      */
     @Override
     public void unassign() {
-        this.lecturer = null;
+        if (lecturer != null) {
+            lecturer.getModulesTaught().remove(moduleCode + " - " + moduleName);
+        }
+        lecturer = null;
     }
 }

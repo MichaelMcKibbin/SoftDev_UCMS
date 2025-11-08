@@ -47,8 +47,30 @@ public class Utility {
         // Prompt the user for input
         System.out.print("Enter your choice: ");
         Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt(); // Assumes valid integer input
-        return choice;
+//        int choice = scanner.nextInt(); // Assumes valid integer input
+//        return choice;
+        while (true) {
+            System.out.print("Enter your choice: ");
+            String input = scanner.nextLine().trim();
+
+            if (input.isEmpty()) {
+                System.out.println("Please enter a number.");
+                continue;
+            }
+
+            try {
+                int choice = Integer.parseInt(input);
+                if (choice >= 1 && choice <= options.length) {
+                    return choice;
+                } else {
+                    System.out.printf("Please enter a number between 1 and %d.%n", options.length);
+                }
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid selection. Please enter a valid number (e.g., 1, 2, 3).");
+            }
+        }
+
+
     }
 
     /**

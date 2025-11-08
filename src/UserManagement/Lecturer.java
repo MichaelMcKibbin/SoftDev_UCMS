@@ -1,5 +1,8 @@
 package UserManagement;
 
+import CourseManagement.Course;
+import Interfaces.Assignable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +16,7 @@ import java.util.List;
  *  - Assigning modules to the lecturer
  *  - Generating reports (placeholder implementation)
  */
-public class Lecturer extends User {
+public class Lecturer extends User implements Assignable<Course> {
 
     // ---------------------- FIELDS ----------------------
 
@@ -26,11 +29,19 @@ public class Lecturer extends User {
     /** List of module names currently assigned to the lecturer */
     private List<String> modulesTaught;
 
+    //**  */
+    Course assignedCourse;
+
     // ---------------------- CONSTRUCTORS ----------------------
 
     /** Default constructor */
     public Lecturer() {
         this.modulesTaught = new ArrayList<>();
+    }
+
+    @Override
+    public void generateReport(String[] reportParameters) {
+        // Stub method
     }
 
     /**
@@ -62,6 +73,32 @@ public class Lecturer extends User {
     public void setDepartment(String department) { this.department = department; }
 
     public List<String> getModulesTaught() { return modulesTaught; }
+
+    public Course getAssignedCourse() { return assignedCourse; }
+
+    // Implement interface methods
+    @Override
+    public void assignTo(Course course) {
+        this.assignedCourse = course;
+    }
+
+    @Override
+    public Course getAssignee() {
+        return assignedCourse;
+    }
+
+    @Override
+    public boolean isAssigned() {
+        return assignedCourse != null;
+    }
+
+    @Override
+    public void unassign() {
+        this.assignedCourse = null;
+    }
+
+
+
 
     // ---------------------- MODULE MANAGEMENT ----------------------
 
