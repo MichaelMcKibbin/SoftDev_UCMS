@@ -91,4 +91,76 @@ public class Utility {
         // Print bottom border
         System.out.println("=".repeat(menuWidth));
     }
+
+    /**
+     * input validation
+     */
+     //  Generic line reader (no blank lines allowed)
+     public static String readNonEmptyLine(String prompt) {
+     java.util.Scanner sc = new java.util.Scanner(System.in);
+     while (true) {
+     System.out.print(prompt);
+     String s = sc.nextLine().trim();
+     if (!s.isEmpty()) return s;
+     System.out.println("Input cannot be empty. Please try again.");
+     }
+     }
+
+     //  Letters-only (for First/Last names)
+     public static String readAlpha(String prompt) {
+     java.util.Scanner sc = new java.util.Scanner(System.in);
+     while (true) {
+     System.out.print(prompt);
+     String s = sc.nextLine().trim();
+     if (s.isEmpty()) {
+     System.out.println("Input cannot be empty. Please try again.");
+     continue;
+     }
+     // allow spaces/hyphens/apostrophes common in names, but no digits
+     if (s.matches("[A-Za-z'\\-\\s]+")) return s;
+     System.out.println("Please use letters, spaces, hyphens, or apostrophes only.");
+     }
+     }
+
+     //  Simple email validator (very basic '@' & '.' )
+     public static String readEmail(String prompt) {
+     java.util.Scanner sc = new java.util.Scanner(System.in);
+     while (true) {
+     System.out.print(prompt);
+     String s = sc.nextLine().trim();
+     if (s.isEmpty()) {
+     System.out.println("Email cannot be empty.");
+     continue;
+     }
+     // very light validation; lets your User.setEmail do stricter checks if needed
+     if (s.matches("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$")) return s;
+     System.out.println("Please enter a valid email address (e.g., name@example.com).");
+     }
+     }
+
+     // Simple phone validator: digits, spaces, +, -, or ()
+     public static String readPhone(String prompt) {
+     java.util.Scanner sc = new java.util.Scanner(System.in);
+     while (true) {
+     System.out.print(prompt);
+     String s = sc.nextLine().trim();
+     if (s.isEmpty()) {
+     System.out.println("Phone cannot be empty.");
+     continue;
+     }
+     if (s.matches("[0-9+()\\-\\s]+")) return s;
+     System.out.println("Phone should contain digits and standard symbols (+ - ( ) space).");
+     }
+     }
+
+     // Password reader: not empty - no complexity check (yet)
+     public static String readPassword(String prompt) {
+     java.util.Scanner sc = new java.util.Scanner(System.in);
+     while (true) {
+     System.out.print(prompt);
+     String s = sc.nextLine();
+     if (!s.trim().isEmpty()) return s;
+     System.out.println("Password cannot be empty.");
+     }
+     }
 }

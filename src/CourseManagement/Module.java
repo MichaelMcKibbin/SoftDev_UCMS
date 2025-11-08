@@ -18,7 +18,7 @@ import java.io.File;
  *
  * Implements the Assignable interface to allow flexible assignment to a User.
  */
-public class Module implements Interfaces.Assignable<Lecturer> {
+public class Module implements Assignable<Lecturer> {
 
     // ---------------------- FIELDS ----------------------
 
